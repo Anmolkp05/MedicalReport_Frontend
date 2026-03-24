@@ -1,65 +1,70 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <div className="min-h-screen bg-slate-50 font-['Poppins']">
+      
+      {/* --- HERO SECTION --- */}
+      <header className="relative text-center shadow-lg bg-[linear-gradient(135deg,#000428_0%,#004e92_100%)] text-white pt-24 pb-36 rounded-b-[50px]">
+        <div className="container mx-auto px-6">
+          <div className="inline-block bg-white/20 px-4 py-1 rounded-full text-[0.8rem] uppercase tracking-wider mb-3">
+            v2.0 Beta - Digital Report Access
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4">
+            Your Health, <span className="text-[#00d2ff]">Stored Securely.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="max-w-2xl mx-auto text-lg opacity-75 mb-8">
+            UltraLab connects laboratories and patients instantly. Access your medical reports anytime, anywhere without the wait.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      {/* --- OVERLAPPING CARDS SECTION --- */}
+      <div className="container mx-auto px-6 relative z-10 -mt-24"> 
+  {/* Added -mt-24 and z-10 to make sure they float properly */}
+  <div className="flex flex-wrap justify-center gap-8">
+    
+    {/* Patient Card */}
+    <div className="w-full md:w-[450px]">
+      <div className="bg-white p-10 rounded-[30px] shadow-xl text-center h-full hover:-translate-y-3 transition-all duration-300 border border-slate-100">
+        <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">📄</div>
+        <h3 className="text-2xl font-bold mb-4 text-slate-800">For Patients</h3>
+        <p className="text-slate-500 mb-8">Access and download your reports instantly.</p>
+        <Link href="/myreports" className="btn-primary-custom inline-block border-2 border-[#004e92] text-[#004e92] hover:bg-[#004e92] hover:text-white px-8 py-3 rounded-xl font-bold">
+          Get My Report
+        </Link>
+      </div>
+    </div>
+
+    {/* Admin Card */}
+    <div className="w-full md:w-[450px]">
+      <div className="bg-white p-10 rounded-[30px] shadow-xl text-center h-full hover:-translate-y-3 transition-all duration-300 border border-slate-100">
+        <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">⚡</div>
+        <h3 className="text-2xl font-bold mb-4 text-slate-800">Laboratory Admin</h3>
+        <p className="text-slate-500 mb-8">Securely upload reports to the cloud.</p>
+        <Link href="/admin" className="inline-block bg-[#004e92] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#003366] shadow-lg">
+          Upload Section
+        </Link>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+      {/* --- TRUST BADGES --- */}
+      <div className="container mx-auto px-6 mt-20 py-12 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 opacity-50">
+          <h5 className="text-xl font-semibold text-slate-700 uppercase tracking-widest">Safe & Encrypted</h5>
+          <h5 className="text-xl font-semibold text-slate-700 uppercase tracking-widest">Cloud-Based Delivery</h5>
+          <h5 className="text-xl font-semibold text-slate-700 uppercase tracking-widest">24/7 Access</h5>
         </div>
-      </main>
+      </div>
+
+      {/* --- FOOTER --- */}
+      <footer className="py-8 text-center text-slate-400 border-t border-slate-200 mt-12">
+        <p>© 2026 UltraLab Digital Systems | Built by Anmol Kamalapuri</p>
+      </footer>
+
     </div>
   );
 }
