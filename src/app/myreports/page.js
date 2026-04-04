@@ -15,13 +15,16 @@ export default function PatientPortal() {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/patients/view-results`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        //JSON.stringify: Converts your JavaScript variables into a format the Java server can read easily.
         body: JSON.stringify({ phone, otp }),
       });
 
       if (!response.ok) throw new Error("Invalid OTP or connection error");
 
+      // If the server says "Yes," it sends back a list (array) of reports. We save that list in our reports memory.
       const data = await response.json();
       setReports(data);
+
     } catch (err) {
       setError(err.message);
     }
@@ -31,9 +34,11 @@ export default function PatientPortal() {
     <div className="min-h-screen bg-slate-50 p-8 font-sans">
       <div className="max-w-4xl mx-auto">
         {/* 1. Login Section (Shows only if no reports are loaded) */}
+        {/* "If we DON'T have reports yet, show the login box." */}
         {!reports && (
           <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md mx-auto">
             <h2 className="text-2xl font-bold text-center text-slate-800 mb-6">Patient Login</h2>
+            {/*This is on the <form> tag. It tells the browser: "When the user clicks the button or presses Enter, run the handleSearch function to talk to the Java server." */}
             <form onSubmit={handleSearch} className="space-y-4">
               <input 
                 type="text" placeholder="Phone Number" 
@@ -52,6 +57,7 @@ export default function PatientPortal() {
         )}
 
         {/* 2. Reports Table (Shows only after successful login) */}
+        {/* "If we DO have reports, hide the login box and show the table." */}
         {reports && (
           <div className="bg-white p-6 rounded-2xl shadow-lg">
             <div className="flex justify-between items-center mb-6">
@@ -59,9 +65,11 @@ export default function PatientPortal() {
               <button onClick={() => setReports(null)} className="text-blue-600 hover:underline">Exit</button>
             </div>
 
+            {/* if no reports found */}
             {reports.length === 0 ? (
               <p className="text-center py-10 text-slate-500">No reports found for this number.</p>
             ) : (
+              // if found reports
               <table className="w-full text-left">
                 <thead className="border-b bg-slate-50 text-slate-600 text-sm">
                   <tr>
@@ -91,3 +99,5 @@ export default function PatientPortal() {
     </div>
   );
 }
+
+

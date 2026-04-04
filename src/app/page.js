@@ -1,9 +1,16 @@
+// This imports the Next.js Link component, which allows for fast, client-side navigation between pages without a full browser refresh.
 import Link from "next/link";
 
+
+
+// This defines the main functional component for your homepage.
 export default function Home() {
   return (
+    // min-h-screen: Ensures the page is at least as tall as the device screen.
+    // bg-slate-50: Sets a very light gray background.
+    // font-['Poppins']: Applies the Poppins font (assuming you've linked it in your global CSS).
     <div className="min-h-screen bg-slate-50 font-['Poppins']">
-      
+
       {/* --- HERO SECTION --- */}
       <header className="relative text-center shadow-lg bg-[linear-gradient(135deg,#000428_0%,#004e92_100%)] text-white pt-24 pb-36 rounded-b-[50px]">
         <div className="container mx-auto px-6">
@@ -20,40 +27,40 @@ export default function Home() {
       </header>
 
       {/* --- OVERLAPPING CARDS SECTION --- */}
-      <div className="container mx-auto px-6 relative z-10 -mt-24"> 
-  {/* Added -mt-24 and z-10 to make sure they float properly */}
-  <div className="flex flex-wrap justify-center gap-8">
-    
-    {/* Patient Card */}
-    <div className="w-full md:w-[450px]">
-      <div className="bg-white p-10 rounded-[30px] shadow-xl text-center h-full hover:-translate-y-3 transition-all duration-300 border border-slate-100">
-        <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">📄</div>
-        <h3 className="text-2xl font-bold mb-4 text-slate-800">For Patients</h3>
-        <p className="text-slate-500 mb-8">Access and download your reports instantly.</p>
-        <Link href="/myreports" className="btn-primary-custom inline-block border-2 border-[#004e92] text-[#004e92] hover:bg-[#004e92] hover:text-white px-8 py-3 rounded-xl font-bold">
-          Get My Report
-        </Link>
-      </div>
-    </div>
+      <div className="container mx-auto px-6 relative z-10 -mt-24">
+        {/* Added -mt-24 and z-10 to make sure they float properly */}
+        <div className="flex flex-wrap justify-center gap-8">
 
-    {/* Admin Card */}
-    <div className="w-full md:w-[450px]">
-      <div className="bg-white p-10 rounded-[30px] shadow-xl text-center h-full hover:-translate-y-3 transition-all duration-300 border border-slate-100">
-        <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">⚡</div>
-        <h3 className="text-2xl font-bold mb-4 text-slate-800">Laboratory Admin</h3>
-        <p className="text-slate-500 mb-8">Securely upload reports to the cloud.</p>
-        <Link href="/login" className="inline-block bg-[#004e92] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#003366] shadow-lg">
-          Upload Section
-        </Link>
-        {/* 2. ADD THIS SECURITY NOTICE HERE */}
-         <p className="text-[10px] text-slate-400 mt-3 uppercase tracking-wider font-semibold">
-         🔒 SECURE ADMIN ACCESS REQUIRED
-         </p>
-      </div>
-    </div>
+          {/* Patient Card */}
+          <div className="w-full md:w-[450px]">
+            <div className="bg-white p-10 rounded-[30px] shadow-xl text-center h-full hover:-translate-y-3 transition-all duration-300 border border-slate-100">
+              <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">📄</div>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800">For Patients</h3>
+              <p className="text-slate-500 mb-8">Access and download your reports instantly.</p>
+              <Link href="/myreports" className="btn-primary-custom inline-block border-2 border-[#004e92] text-[#004e92] hover:bg-[#004e92] hover:text-white px-8 py-3 rounded-xl font-bold">
+                Get My Report
+              </Link>
+            </div>
+          </div>
 
-  </div>
-</div>
+          {/* Admin Card */}
+          <div className="w-full md:w-[450px]">
+            <div className="bg-white p-10 rounded-[30px] shadow-xl text-center h-full hover:-translate-y-3 transition-all duration-300 border border-slate-100">
+              <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">⚡</div>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800">Laboratory Admin</h3>
+              <p className="text-slate-500 mb-8">Securely upload reports to the cloud.</p>
+              <Link href="/login" className="inline-block bg-[#004e92] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#003366] shadow-lg">
+                Upload Section
+              </Link>
+              {/* 2. ADD THIS SECURITY NOTICE HERE */}
+              <p className="text-[10px] text-slate-400 mt-3 uppercase tracking-wider font-semibold">
+                🔒 SECURE ADMIN ACCESS REQUIRED
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
       {/* --- TRUST BADGES --- */}
       <div className="container mx-auto px-6 mt-20 py-12 text-center">
@@ -72,3 +79,5 @@ export default function Home() {
     </div>
   );
 }
+
+
