@@ -49,7 +49,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">⚡</div>
               <h3 className="text-2xl font-bold mb-4 text-slate-800">Laboratory Admin</h3>
               <p className="text-slate-500 mb-8">Securely upload reports to the cloud.</p>
-              <Link href="/login" className="inline-block bg-[#004e92] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#003366] shadow-lg">
+              <Link href="/Login" className="inline-block bg-[#004e92] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#003366] shadow-lg">
                 Upload Section
               </Link>
               {/* 2. ADD THIS SECURITY NOTICE HERE */}
