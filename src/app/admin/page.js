@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+mport { useRouter } from "next/navigation";
 
 
 
@@ -7,7 +8,23 @@ export default function AdminUpload() {
   const [formData, setFormData] = useState({ name: "", phone: "", testType: "" });
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(""); 
+  const [message, setMessage] = useState("");
+
+  const router = useRouter(); // 3. Initialize the router
+
+    useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn !== "true") {
+      router.push("/login");
+    }
+  }, [router]);
+
+    const handleLogout = () => {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("adminEmail");
+      router.push("/"); // Sends you back to the main homepage
+
+    };
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -24,6 +41,7 @@ export default function AdminUpload() {
      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/upload`, {
         method: "POST",
         body: data,
+        credentials: "include",
       });
 
       if (response.ok) {
@@ -44,7 +62,15 @@ export default function AdminUpload() {
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-100">
-        
+
+        {/* --- LOGOUT BUTTON (Top Right) --- */}
+        <button
+         onClick={handleLogout}
+         className="absolute top-4 right-4 text-[10px] font-bold text-red-500 hover:bg-red-50 px-3 py-1 rounded-full border border-red-100 transition-all shadow-sm"
+         >
+          LOGOUT 🚪
+        </button>
+
         {/* 1. Header Section */}
         <div className="text-center mb-8">
           <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
